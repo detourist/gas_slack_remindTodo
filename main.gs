@@ -251,13 +251,15 @@ function doRemind(channelId, token){
     for(var i = 0; i < todoUsers.length; i++){
       //対象ユーザ
       var userId = todoUsers[i];
-      var userInfo = getUserInfo(userId, token);
-      var userName = userInfo.name;
+//      var userInfo = getUserInfo(userId, token);
+//      var userName = userInfo.name;
       Logger.log("//////// user ////////");
-      Logger.log("todoUsers["+ i +"], userName="+ userName);
+      Logger.log("todoUsers["+ i +"], userId="+ userId);
+//      Logger.log("todoUsers["+ i +"], userName="+ userName);
       
       //投稿テキストを生成
-      var postText = userIcon +"*"+ userName +"*\n";
+      var postText = userIcon +"<@"+ userId +">\n";
+//      var postText = userIcon +"*"+ userName +"*\n";
       
       //ToDoデータ配列のうち、ユーザが対象ユーザのデータのみ抽出
       var todos = todoData.filter(function(item, index){
@@ -418,25 +420,25 @@ function getMyChannels(token){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function getUserInfo(userId, token){
-  // ユーザ情報を取得
-  //【API】
-  // https://api.slack.com/methods/users.info
-  //【Limit】
-  // Web API Tier 4 : 100+ per minute
-
-  var url ="https://slack.com/api/users.info";
-  url += "?token=" + token;
-  url += "&user=" + userId;
-  Logger.log("//////// users.info ////////");
-  Logger.log(url);
-  
-  var response = UrlFetchApp.fetch(url);
-  sleep(600);
-  var data = JSON.parse(response.getContentText());
-  Logger.log("response="+ (data.ok ? "{ok=true}" : data));
-  //Logger.log(data);
-    
-  return data.user;
+//  // ユーザ情報を取得
+//  //【API】
+//  // https://api.slack.com/methods/users.info
+//  //【Limit】
+//  // Web API Tier 4 : 100+ per minute
+//
+//  var url ="https://slack.com/api/users.info";
+//  url += "?token=" + token;
+//  url += "&user=" + userId;
+//  Logger.log("//////// users.info ////////");
+//  Logger.log(url);
+//  
+//  var response = UrlFetchApp.fetch(url);
+//  sleep(600);
+//  var data = JSON.parse(response.getContentText());
+//  Logger.log("response="+ (data.ok ? "{ok=true}" : data));
+//  //Logger.log(data);
+//    
+//  return data.user;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
