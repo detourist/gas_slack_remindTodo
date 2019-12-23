@@ -298,7 +298,7 @@ function doRemind(channelId, token){
         Logger.log("//////// text ////////");
         
         //メンションを削除
-        text = text.replace(/<@.*?>/g, '');
+        text = text.replace(/<@[^<>]*>/g, '');
         //Logger.log("text="+ text);
         
         //改行をスペースに変換
