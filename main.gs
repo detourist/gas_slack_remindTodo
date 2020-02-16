@@ -297,10 +297,14 @@ function doRemind(channelId, token){
         var text = String(todos[j].text);
         Logger.log("//////// text ////////");
         
-        //メンションを削除
+        //ユーザ宛てメンションを削除
         text = text.replace(/<@[^<>]*>/g, '');
         //Logger.log("text="+ text);
-        
+
+        //ユーザグループ宛てメンションを削除
+        text = text.replace(/<!subteam[^<>]*>/g, '');
+        //Logger.log("text="+ text);
+
         //改行をスペースに変換
         text = text.replace(/\r?\n/g, ' ');
         //Logger.log("text="+ text);
